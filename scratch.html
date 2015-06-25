@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+<h5>Wind rose</h5>
+<style type="text/css">
+#tooltip {
+        position: absolute;
+        width: 200px;
+        height: auto;
+        padding: 10px;
+        background-color: white;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+        pointer-events: none;
+}
+
+#tooltip.hidden {
+        display: none;
+}
+
+#tooltip p {
+        margin: 0;
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 20px;
+}
+</style>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="d3.windrose.js"></script>
+<!--script src="d3.windrose.min.js"></script-->
+<script>
+windrose.drawRose();
+
+var data = { 	"calm": 8,
+					"N": { "0-10": 3, "10-20": 12, "20-30": 0, ">30": 0 },
+					"NE": { "0-10": 0, "10-20": 20, "20-30": 0, ">30": 0 },
+					"E": { "0-10": 0, "10-20": 5, "20-30": 0, ">30": 0 },
+					"SE": { "0-10": 0, "10-20": 0, "20-30": 0, ">30": 0 },
+					"S": { "0-10": 20, "10-20": 30, "20-30": 10, ">30": 10 },
+					"SW": { "0-10": 23, "10-20": 0, "20-30": 0, ">30": 0 },
+					"W": { "0-10": 0, "10-20": 11, "20-30": 0, ">30": 0 },
+					"NW": { "0-10": 0, "10-20": 0, "20-30": 0, ">30": 0 } 
+				};
+				
+windrose.drawRose(data, {x: 150, y: 150});
+
+var speedData = {
+				"N": 10,
+				"NE": 20,
+				"E": 30,
+				"SE": 40,
+				"S": 50,
+				"SW": 60,
+				"W": 70,
+				"NW": 80
+			};
+			
+windrose.meanDirectional.drawRose(speedData, {x: 200,y: 200});
+
+windrose.bomStyle.drawRose();
+</script>
